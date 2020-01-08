@@ -1,0 +1,43 @@
+.navBar {
+    background-color: #6200EE;
+    height: 10vh;
+    box-sizing: border-box;
+    color: grey;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+li {
+    float: left;
+    margin: 3vh 10vw 0 0;
+    background-color: inherit;
+    border: none;
+  }
+
+.brand {
+    font-weight: 800;
+    color:white;
+    margin-left:5vw;
+}
+
+.searchBar {
+    border-radius: 25%;
+    float:right;
+    margin-right:5vw!important;
+    min-width:30vw;
+}
+
+label {
+    color: grey;
+    margin-right:1vw;
+    font-weight: 500;
+}
+
+.inputNav {
+    border: none;
+    height:4vh;
+}
