@@ -5,6 +5,10 @@
     color: grey;
 }
 
+a {
+    color:grey!important
+}
+
 ul {
     list-style-type: none;
     margin: 0;

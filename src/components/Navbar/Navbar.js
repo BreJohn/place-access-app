@@ -22,7 +22,7 @@ export function NavBar() {
         <Router>
             <div className="navBar">
                 <ul>
-                    <Link to='/home'><li><NavButton className="navItem brand">Accessibility</NavButton></li></Link>
+                    <Link to='/'><li><NavButton className="navItem brand">Accessibility</NavButton></li></Link>
                     <Link to='/allPlaces'><li><NavButton className="navItem">All Places</NavButton></li></Link>
                     <Link to='/myPlaces'><li><NavButton className="navItem">My Places</NavButton></li></Link>
                     <li className="searchBar">

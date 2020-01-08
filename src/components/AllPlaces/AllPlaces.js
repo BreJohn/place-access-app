@@ -1,4 +1,5 @@
 import React from 'react';
+// @ts-ignore
 import places from '../../assets/Places.json';
 import { Place } from '../Place/Place.js';
 
