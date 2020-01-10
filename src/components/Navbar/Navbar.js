@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { AllPlaces } from '../AllPlaces/AllPlaces';
 import { MyPlaces } from '../MyPlaces/MyPlaces';
+import { PlaceDetails } from '../PlaceDetails/PlaceDetails';
 
 export function NavBar() {
   return (
@@ -30,6 +31,7 @@ export function NavBar() {
         <Route path="/myPlaces">
           <MyPlaces />
         </Route>
+        <Route path="/placeDetails/:id" component={PlaceDetails}/>
       </Switch>
     </Router>
   )

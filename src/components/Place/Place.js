@@ -1,7 +1,6 @@
 import React from 'react';
 import './Place.css'
-import { Link, Route } from 'react-router-dom';
-import { PlaceDetails } from '../PlaceDetails/PlaceDetails';
+import { Link} from 'react-router-dom';
 
 export function Place(props) {
     const { placeInfo } = props;
@@ -9,7 +8,7 @@ export function Place(props) {
 
     return (
         <div>
-            <Link to={"/placeDetails"}>
+            <Link to={`/placeDetails/${placeInfo.index}`}>
                 <div className="wrapper">
                     <div className="title"> {placeInfo.name} </div>
                     <img className="placeImg" src={placeInfo.photo} alt="placeImg" />
@@ -29,7 +28,6 @@ export function Place(props) {
                     </div>
                 </div>
             </Link>
-            <Route path="/placeDetails" component={PlaceDetails} />
         </div>
 
 
