@@ -5,8 +5,9 @@
     color: grey;
 }
 
-a {
-    color:grey!important
+a:hover {
+    color: white;
+    cursor: pointer;
 }
 
 ul {
@@ -18,8 +19,12 @@ ul {
 li {
     float: left;
     margin: 3vh 10vw 0 0;
-    background-color: inherit;
     border: none;
+  }
+
+  a {
+    color:grey;
+    text-decoration: none;
   }
 
 .brand {

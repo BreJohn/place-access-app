@@ -1,10 +1,10 @@
 import React from 'react';
-import './Place.css'
 
-export function PlaceDetails(props) {
+
+export function PlaceDetails() {
     return (
         <div>
-
+            <h3>Requested Place ID:</h3>
         </div>
     )
 }

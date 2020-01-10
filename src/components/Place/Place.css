@@ -8,6 +8,7 @@
     border-radius: 25%;
     min-width: 260px;
     cursor: pointer;
+    color:black;
 }
 
 .title {
@@ -28,10 +29,9 @@ margin-left:10%;
     padding-left:10%;
 }
 
-.hovered-state {
-    background-color: grey!important;
-}
-
 .checked {
     color: orange;
   }
+.wrapper:hover {
+    background-color: grey!important;
+}
