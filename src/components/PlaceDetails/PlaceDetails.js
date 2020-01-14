@@ -1,12 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { SideBar } from '../SideBar/SideBar';
 
 
 export function PlaceDetails(props) {
     const { id } = useParams();
     return (
-        <div>
-            <h3>Requested Place ID: {id}</h3>
-        </div>
+        <SideBar id={id}></SideBar>
     )
 }
