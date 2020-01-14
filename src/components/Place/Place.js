@@ -8,13 +8,13 @@ export function Place(props) {
 
     return (
         <div>
-            <Link to={`/placeDetails/${placeInfo.index}`}>
+            <Link to={`/placeDetails/${placeInfo.place_id}`}>
                 <div className="wrapper">
                     <div className="title"> {placeInfo.name} </div>
-                    <img className="placeImg" src={placeInfo.photo} alt="placeImg" />
+                    {/* <img className="placeImg" src={placeInfo.photo} alt="placeImg" /> */}
                     <div className="details">
                         <div className="location">
-                            <strong>Address: </strong>{placeInfo.address}
+                            <strong>Address: </strong>{placeInfo.vicinity}
                         </div>
                         <div className="accessibility">
                             <strong>Accessibility: </strong>
