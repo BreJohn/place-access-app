@@ -3,7 +3,7 @@ import './Place.css'
 import { Link} from 'react-router-dom';
 
 export function Place(props) {
-    const { placeInfo } = props;
+    const { placeInfo, photoUrl } = props;
 
 
     return (
@@ -11,7 +11,7 @@ export function Place(props) {
             <Link to={`/placeDetails/${placeInfo.place_id}`}>
                 <div className="wrapper">
                     <div className="title"> {placeInfo.name} </div>
-                    {/* <img className="placeImg" src={placeInfo.photo} alt="placeImg" /> */}
+                    <img src={photoUrl} alt="placePhoto"/>
                     <div className="details">
                         <div className="location">
                             <strong>Address: </strong>{placeInfo.vicinity}
