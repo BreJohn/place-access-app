@@ -43,3 +43,7 @@ img {
     height: 50%;
     margin-left: 10%;
 }
+
+.accessibility {
+    min-width: 20vw;
+}
