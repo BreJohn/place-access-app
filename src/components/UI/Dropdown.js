@@ -22,7 +22,7 @@ export function Dropdown(props) {
     return (
         <>
             <button className="dropbtn" onClick={toggleDropdown}>Choose Place
-            <i className="fa fa-caret-down" ref={caret}></i>
+            <i className="fa fa-caret-up" ref={caret}></i>
             </button>
             <div className="dropdown-content" id="myDropdown" ref={dropdown}>
                 {links.map(
