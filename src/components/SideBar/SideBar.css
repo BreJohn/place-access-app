@@ -2,4 +2,21 @@
     width: 20vw;
     border-right: 1px solid black;
     height: 90vh;
+    background-color: #d4a2dd;
+}
+
+.details {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.detailsLabel {
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.m-t-15 {
+    margin-bottom: 15px;
 }

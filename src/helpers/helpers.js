@@ -40,3 +40,20 @@ const getKey = () => {
     const key = 'AIzaSyDXrny7l7-uRKd64MWqBGh4_-ke_j2l3qk';
     return key;
 }
+
+export const getSpecificPlace = (place_id) => {
+    const key = getKey();
+    const request = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=name,rating,formatted_address,formatted_phone_number&key=${key}`;
+    const resultsFromStorage = localStorage.getItem(place_id);
+    if (resultsFromStorage) {
+        const parsedResults = JSON.parse(resultsFromStorage);
+        return parsedResults;
+    } else {
+        axios.get(request).then(
+            (response) => {
+                localStorage.setItem(place_id, JSON.stringify(response));
+                return response;
+            }
+        )
+    }
+}

@@ -3,14 +3,14 @@ import './Place.css'
 import { Link} from 'react-router-dom';
 
 export function Place(props) {
-    const { placeInfo,  } = props;
+    const { placeInfo, photoUrl } = props;
     return (
         <div>
             <Link to={`/placeDetails/${placeInfo.place_id}`}>
                 <div className="wrapper">
                     <div className="title"> {placeInfo.name} </div>
-                    {/* <img src={photoUrl} alt="placePhoto"/> */}
-                    <div className="details">
+                    <img className="placeImg" src={photoUrl} alt="placePhoto"/> 
+                    <div className="p-l-10">
                         <div className="location">
                             <strong>Address: </strong>{placeInfo.vicinity}
                         </div>

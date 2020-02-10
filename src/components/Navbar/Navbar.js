@@ -35,8 +35,7 @@ export function NavBar() {
         <Route path="/myPlaces">
           <MyPlaces />
         </Route>
-        <Route path="/pl
-        aceDetails/:id" component={PlaceDetails}/>
+        <Route path="/placeDetails/:id" component={PlaceDetails}/>
       </Switch>
     </Router>
   )

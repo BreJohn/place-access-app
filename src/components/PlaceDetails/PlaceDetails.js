@@ -5,7 +5,10 @@ import { SideBar } from '../SideBar/SideBar';
 
 export function PlaceDetails(props) {
     const { id } = useParams();
+
     return (
+        <>
         <SideBar id={id}></SideBar>
+        </>
     )
 }
