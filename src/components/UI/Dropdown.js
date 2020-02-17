@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Dropdown.css';
+import { NavLink } from '../Navbar/NavBar.styles';
 export function Dropdown(props) {
     const { links } = props;
     const [open, setOpen] = React.useState(false);
@@ -27,7 +27,7 @@ export function Dropdown(props) {
             <div className="dropdown-content" id="myDropdown" ref={dropdown}>
                 {links.map(
                     (link) => {
-                        return <Link key={link} to={link}>{link}</Link>
+                        return <NavLink key={link} to={link}>{link}</NavLink>
                     }
                 )}
             </div>

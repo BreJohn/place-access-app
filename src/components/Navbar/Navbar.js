@@ -3,31 +3,31 @@ import './Navbar.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { AllPlaces } from '../AllPlaces/AllPlaces';
 import { MyPlaces } from '../MyPlaces/MyPlaces';
 import { PlaceDetails } from '../PlaceDetails/PlaceDetails';
 import { Dropdown } from '../UI/Dropdown';
+import { Brand, Li, Ul, Label, InputNav, SearchBar, NavBarDiv, NavLink } from './NavBar.styles';
 
 export function NavBar() {
 
   const links = ['Bars', 'Museums', 'Restaurants', 'Other' ]
   return (
     <Router>
-      <div className="navBar">
-        <ul>
-          <li><Link to='/' className="navItem brand">Accessibility</Link></li>
-          <li><Link to='/myPlaces' className="navItem">My Places</Link></li>
-          <li><Dropdown links={links}></Dropdown></li>
-          <li className="searchBar">
-            <label>Search:</label>
-            <input className="inputNav"></input>
-          </li>
-        </ul>
+      <NavBarDiv>
+        <Ul>
+        <Brand><NavLink to='/'>Accessibility</NavLink></Brand>
+          <Li><NavLink to='/myPlaces' >My Places</NavLink></Li>
+          <Li><Dropdown links={links}></Dropdown></Li>
+          <SearchBar>
+            <Label>Search:</Label>
+            <InputNav></InputNav>
+          </SearchBar>
+        </Ul>
 
-      </div>
+      </NavBarDiv>
       <Switch>
         <Route path="/" exact>
           <AllPlaces />
