@@ -5,9 +5,15 @@ import { Rating } from '../UI/Rating/Rating';
 
 export function Place(props) {
     const { placeInfo, photoUrl } = props;
+    console.log('Place: ' + placeInfo.place_id, photoUrl)
     return (
         <div>
-            <Link to={`/placeDetails/${placeInfo.place_id}`}>
+            <Link to={{
+                pathname:`/placeDetails/${placeInfo.place_id}`,
+                state: {
+                    reference: photoUrl
+                }
+            }}>
                 <div className="wrapper">
                     <div className="title"> {placeInfo.name} </div>
                     <img className="placeImg" src={photoUrl} alt="placePhoto"/> 

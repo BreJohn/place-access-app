@@ -3,6 +3,8 @@
     border-right: 1px solid black;
     height: 90vh;
     background-color: #d4a2dd;
+    padding-top: 15px;
+    box-sizing: border-box;
 }
 
 .details {
@@ -18,5 +20,11 @@
 }
 
 .m-t-15 {
-    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.sideBarImg {
+    width: 90%;
+    height: 30%;
+    margin-left: 5%;
 }

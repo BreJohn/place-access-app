@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Place } from '../Place/Place';
 import { getPlaces, getPhoto } from '../../helpers/httpHelpers';
-
+import './AllPlaces.css';
 export function AllPlaces() {
     const [results, setResults] = useState([]);
     useEffect(() => {
@@ -9,11 +9,11 @@ export function AllPlaces() {
         setResults(places);
     }, [])
     return (
-        <div>
+        <div className="p-l-5">
             {
-                results.map(
+                results? results.map(
                     item => <Place placeInfo={item} key={item.place_id} photoUrl={getPhoto(item.photos? item.photos[0].photo_reference : '')}></Place>
-                )
+                ): []
             }
         </div>
     )
