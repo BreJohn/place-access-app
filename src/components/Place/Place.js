@@ -1,6 +1,7 @@
 import React from 'react';
 import './Place.css'
 import { Link} from 'react-router-dom';
+import { Rating } from '../UI/Rating/Rating';
 
 export function Place(props) {
     const { placeInfo, photoUrl } = props;
@@ -16,11 +17,7 @@ export function Place(props) {
                         </div>
                         <div className="accessibility">
                             <strong>Accessibility: </strong>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
+                            <Rating rating={placeInfo.rating}/>
                         </div>
                     </div>
                 </div>

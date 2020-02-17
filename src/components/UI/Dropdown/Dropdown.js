@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dropdown.css';
-import { NavLink } from '../Navbar/NavBar.styles';
+import { NavLink } from '../../Navbar/NavBar.styles';
 export function Dropdown(props) {
     const { links } = props;
     const [open, setOpen] = React.useState(false);

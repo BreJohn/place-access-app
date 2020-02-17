@@ -1,34 +1,37 @@
 import React from 'react';
 import './SideBar.css';
-import { SlideShow } from '../SlideShow/SlideShow';
-import { getSpecificPlace } from '../../helpers/helpers';
+import { getSpecificPlace, getPhoto } from '../../helpers/httpHelpers';
+import { Rating } from '../UI/Rating/Rating';
 
 export function SideBar(props) {
     const result = getSpecificPlace(props.id);
-    console.log(result);
+    const photoUrl = getPhoto(props.id);
+
     return (
         <div className="sideWrapper">
-            <SlideShow></SlideShow>
+            <img className="placeImg" src={photoUrl} alt="placePhoto" />
+
             <div className="details m-t-15">
-            {result.data.result.name}
+                {result.data && result.data.result? result.data.result.name : ''}
             </div>
             <div className="detailsLabel">
-            ADDRESS
+                ADDRESS
             </div>
             <div className="details">
-                {result.data.result.formatted_address}
+                {result.data && result.data.result? result.data.result.formatted_address : ''}
             </div>
             <div className="detailsLabel">
                 PHONE
             </div>
             <div className="details">
-            {result.data.result.formatted_phone_number}
+                {result.data && result.data.result? result.data.result.formatted_phone_number : ''}
             </div>
             <div className="detailsLabel">
                 RATING
             </div>
             <div className="details">
-            {result.data.result.rating}
+                <Rating rating={result.data && result.data.result? result.data.result.rating : ''} />
+
             </div>
         </div>
     )

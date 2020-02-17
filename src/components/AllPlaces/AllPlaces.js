@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// @ts-ignore
-// import places from '../../assets/Places.json';
-// import { Place } from '../Place/Place.js';
 import { Place } from '../Place/Place';
-import { getPlaces, getPhoto } from '../../helpers/helpers';
+import { getPlaces, getPhoto } from '../../helpers/httpHelpers';
 
 export function AllPlaces() {
     const [results, setResults] = useState([]);

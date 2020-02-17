@@ -8,7 +8,7 @@ import {
 import { AllPlaces } from '../AllPlaces/AllPlaces';
 import { MyPlaces } from '../MyPlaces/MyPlaces';
 import { PlaceDetails } from '../PlaceDetails/PlaceDetails';
-import { Dropdown } from '../UI/Dropdown';
+import { Dropdown } from '../UI/Dropdown/Dropdown';
 import { Brand, Li, Ul, Label, InputNav, SearchBar, NavBarDiv, NavLink } from './NavBar.styles';
 
 export function NavBar() {

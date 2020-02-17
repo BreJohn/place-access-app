@@ -17,9 +17,9 @@ export const getPlaces = () => {
     }
 }
 
-export const getPhoto = (reference) => {
+export const getPhoto = (reference, maxwidth = 300, maxheight = 300) => {
     const key = getKey();
-    const request = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=300&photoreference=${reference}&key=${key}`
+    const request = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${maxwidth}&maxheight=${maxheight}&photoreference=${reference}&key=${key}`
         // axios.get(request, {
         //     headers: { 'responseType': 'image/png' }
 
@@ -54,6 +54,9 @@ export const getSpecificPlace = (place_id) => {
                 localStorage.setItem(place_id, JSON.stringify(response));
                 return response;
             }
-        )
+        ).catch(error => {
+            console.log(error)
+            return { 'result': '' };
+        });
     }
 }

@@ -1,39 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cute+Font|Gelasio|Ibarra+Real+Nova|Inria+Serif|Lato|Merriweather|Montserrat|Noto+Sans|Open+Sans|Oswald|Poppins|Public+Sans|Raleway|Roboto|Roboto+Condensed|Roboto+Mono|Roboto+Slab|Source+Sans+Pro&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Alegreya', 
-     'Alegreya Sans', sans-serif,
-     'Alegreya', serif,
-     'Roboto', sans-serif,
-     'Gelasio', serif,
-     'Public Sans', sans-serif,
-     'Ibarra Real Nova', serif,
-     'Lato', sans-serif,
-     'Open Sans', sans-serif,
-     'Montserrat', sans-serif,
-     'Roboto Condensed', sans-serif,
-     'Cute Font', cursive,
-     'Source Sans Pro', sans-serif,
-     'Oswald', sans-serif,
-     'Inria Serif', serif,
-     'Poppins', sans-serif,
-     'Roboto Mono', monospace,
-     'Raleway', sans-serif,
-     'Noto Sans', sans-serif,
-     'Merriweather', serif,
-     'Roboto Slab', serif;
-
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color:#e1bee7;
-
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Alegreya', 'Alegreya Sans', sans-serif, 'Alegreya', serif, 'Roboto', sans-serif, 'Gelasio', serif, 'Public Sans', sans-serif, 'Ibarra Real Nova', serif, 'Lato', sans-serif, 'Open Sans', sans-serif, 'Montserrat', sans-serif, 'Roboto Condensed', sans-serif, 'Cute Font', cursive, 'Source Sans Pro', sans-serif, 'Oswald', sans-serif, 'Inria Serif', serif, 'Poppins', sans-serif, 'Roboto Mono', monospace, 'Raleway', sans-serif, 'Noto Sans', sans-serif, 'Merriweather', serif, 'Roboto Slab', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #e1bee7;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
-
