@@ -5,12 +5,11 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { AllPlaces } from '../AllPlaces/AllPlaces';
 import { MyPlaces } from '../MyPlaces/MyPlaces';
 import { PlaceDetails } from '../PlaceDetails/PlaceDetails';
 import { Dropdown } from '../UI/Dropdown/Dropdown';
 import { Brand, Li, Ul, Label, InputNav, SearchBar, NavBarDiv, NavLink } from './NavBar.styles';
-
+import AllPlaces from '../AllPlaces/AllPlaces';
 export function NavBar() {
 
   const links = ['Bars', 'Museums', 'Restaurants', 'Other' ]
