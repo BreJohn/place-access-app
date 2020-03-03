@@ -5,15 +5,16 @@
     background-color: #d4a2dd;
     padding-top: 15px;
     box-sizing: border-box;
+    float: left;
 }
 
-.details {
+.sideDetails {
     font-size: 1.2em;
     margin-bottom: 15px;
     text-align: center;
 }
 
-.detailsLabel {
+.sideDetailsLabel {
     font-weight: bold;
     font-size: 1.3em;
     text-align: center;

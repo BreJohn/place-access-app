@@ -2,6 +2,7 @@ import React from 'react';
 import './Place.css'
 import { Link} from 'react-router-dom';
 import { Rating } from '../UI/Rating/Rating';
+import PropTypes from "prop-types";
 
 export function Place(props) {
     const { placeInfo, photoUrl } = props;
@@ -33,3 +34,8 @@ export function Place(props) {
 
     )
 }
+
+Place.propTypes = {
+    placeInfo: PropTypes.object,
+    photoUrl: PropTypes.string
+};

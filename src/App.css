@@ -6,3 +6,7 @@ button {
     color: inherit;
     cursor: pointer;
 }
+
+body {
+    overflow: auto;
+}

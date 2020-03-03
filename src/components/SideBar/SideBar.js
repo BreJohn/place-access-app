@@ -9,28 +9,28 @@ export function SideBar(props) {
     return (
         <div className="sideWrapper">
             
-            <div className="details detailsLabel m-t-15">
+            <div className="sideDetails sideDetailsLabel m-t-15">
                 {result && result.data && result.data.result? result.data.result.name : ''}
             </div>
 
             <img className="sideBarImg" src={props.photoUrl} alt="placePhoto" />
 
-            <div className="detailsLabel">
+            <div className="sideDetailsLabel">
                 ADDRESS
             </div>
-            <div className="details">
+            <div className="sideDetails">
                 {result && result.data && result.data.result? result.data.result.formatted_address : ''}
             </div>
-            <div className="detailsLabel">
+            <div className="sideDetailsLabel">
                 PHONE
             </div>
-            <div className="details">
+            <div className="sideDetails">
                 {result && result.data && result.data.result? result.data.result.formatted_phone_number : ''}
             </div>
-            <div className="detailsLabel">
+            <div className="sideDetailsLabel">
                 RATING
             </div>
-            <div className="details">
+            <div className="sideDetails">
                 <Rating rating={result && result.data && result.data.result? result.data.result.rating : ''} />
 
             </div>
