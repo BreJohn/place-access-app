@@ -1,16 +1,17 @@
 .wrapper{
-    height:50vh;
+    min-height: 320px;
+    padding: 18px;
     width:25vw;
     float:left;
     box-sizing: border-box;
     margin:5vw 2vw;
-    border: 1px black solid;
-    border-radius: 25%;
+    background-color: hsl(48deg 100% 93%);
     min-width: 260px;
     cursor: pointer;
 }
 
 .title {
+    margin-bottom: 6px;
     font-size: 1.5em;
     font-weight: 600;
     text-align:center;
@@ -29,7 +30,7 @@ margin-left:10%;
 }
 
 .hovered-state {
-    background-color: grey!important;
+    background-color: hsl(48deg 40% 93%)!important;
 }
 
 .checked {
