@@ -21,7 +21,7 @@ export function Place(props) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="title"> {placeInfo.name} </div>
+        <div className="title mt-6"> {placeInfo.name} </div>
         <img className="placeImg" src={placeInfo.photo} alt="placeImg" />
         <div className="details">
           <div className="location">
