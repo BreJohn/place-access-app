@@ -5,41 +5,59 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import App from "../../App";
 import { AllPlaces } from "../AllPlaces/AllPlaces";
 import { MyPlaces } from "../MyPlaces/MyPlaces";
+import PlaceDetails from "../PlaceDetails/PlaceDetails";
 
 export function NavBar() {
+  const NavBar = styled.div`
+    background-color: hsl(264.71deg 100% 16.67%);
+    height: 10vh;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  `;
+  const SearchBar = styled.div`
+    border-radius: 25%;
+    margin-right: 5vw !important;
+  `;
   const NavButton = styled.div`
+    font-weight: ${(props) => (props.brand ? 800 : "normal")};
+    margin-left: ${(props) => (props.brand ? "5vw" : "0")};
+
     :hover {
       color: white;
       cursor: pointer;
     }
   `;
+
+  const ContentWrapper = styled.div`
+    height: 90vh;
+  `;
   return (
     <Router>
-      <div className="navBar">
-        <Link to="/">
-          <NavButton className="navItem brand">Accessibility</NavButton>
+      <NavBar>
+        <Link to="/allPlaces">
+          <NavButton brand>Accessibility</NavButton>
         </Link>
         <Link to="/allPlaces">
-          <NavButton className="navItem">All Places</NavButton>
+          <NavButton>All Places</NavButton>
         </Link>
         <Link to="/myPlaces">
-          <NavButton className="navItem">My Places</NavButton>
+          <NavButton>My Places</NavButton>
         </Link>
-        <div className="searchBar">
+        <SearchBar>
           <label>Search:</label>
           <input className="inputNav"></input>
-        </div>
-      </div>
+        </SearchBar>
+      </NavBar>
       <Switch>
-        <Route path="/home">
-          <App />
-        </Route>
-        <Route path="/allPlaces">
-          <AllPlaces />
-        </Route>
-        <Route path="/myPlaces">
-          <MyPlaces />
-        </Route>
+        <ContentWrapper>
+          <Route path="/home" component={App} />
+          <Route path="/allPlaces" component={AllPlaces} />
+          <Route path="/myPlaces" component={MyPlaces} />
+          <Route path="/place-details/:id" component={PlaceDetails} />
+        </ContentWrapper>
       </Switch>
     </Router>
   );
