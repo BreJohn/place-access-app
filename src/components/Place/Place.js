@@ -3,24 +3,11 @@ import "./Place.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export function Place(props) {
-  const [isHovered, setIsHovered] = useState();
   const { placeInfo } = props;
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
 
   return (
     <Link to={`/place-details/${placeInfo.index}`}>
-      <div
-        className={`place-wrapper ${isHovered ? "hovered-state" : ""}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <div className={`place-wrapper`}>
         <div className="title mt-6"> {placeInfo.name} </div>
         <img className="placeImg" src={placeInfo.photo} alt="placeImg" />
         <div className="details">

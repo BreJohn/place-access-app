@@ -5,6 +5,7 @@ import styled from "styled-components";
 import entranceImg from "../../assets/entrance.jpg";
 import mainAreaImg from "../../assets/main-area.jpg";
 import wcImg from "../../assets/wc.jpg";
+import { useState } from "react";
 
 const PlaceDetails = (props) => {
   const PlaceDetailsWrapper = styled.div`
@@ -21,6 +22,9 @@ const PlaceDetails = (props) => {
       text-align: center;
       padding: 8px 4px 0px 4px;
       height: 500px;
+      &:hover {
+        background-color: hsl(0deg 0% 90%) !important;
+      }
     }
     &.title {
       height: 25px;
@@ -35,17 +39,17 @@ const PlaceDetails = (props) => {
     <div className="text-center">
       <h1> PLACE ID {id}</h1>
       <PlaceDetailsWrapper>
-        <div>
+        <div className="entrance">
           <div className="title">Entrance</div>
-          <img src={entranceImg}></img>
+          <img src={entranceImg} alt="Entrance"></img>
         </div>
-        <div>
+        <div className="main-area">
           <div className="title">Main Area</div>
-          <img src={mainAreaImg}></img>
+          <img src={mainAreaImg} alt="Main Area"></img>
         </div>
-        <div>
+        <div className="wc">
           <div className="title">WC</div>
-          <img src={wcImg}></img>
+          <img src={wcImg} alt="WC"></img>
         </div>
       </PlaceDetailsWrapper>
     </div>
