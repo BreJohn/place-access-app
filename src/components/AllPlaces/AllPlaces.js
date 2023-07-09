@@ -4,7 +4,7 @@ import places from "../../assets/Places.json";
 import { Place } from "../Place/Place.js";
 import classes from "./AllPlaces.module.scss";
 
-export function AllPlaces() {
+export const AllPlaces = () => {
   const placeArray = places;
   return (
     <div className={classes["place-container"]}>
@@ -13,4 +13,4 @@ export function AllPlaces() {
       ))}
     </div>
   );
-}
+};

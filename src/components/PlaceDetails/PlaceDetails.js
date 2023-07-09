@@ -5,7 +5,7 @@ import entranceImg from "../../assets/entrance.jpg";
 import mainAreaImg from "../../assets/main-area.jpg";
 import wcImg from "../../assets/wc.jpg";
 
-const PlaceDetails = (props) => {
+export const PlaceDetails = (props) => {
   const { id } = useParams();
   return (
     <div className="text-center">
@@ -27,5 +27,3 @@ const PlaceDetails = (props) => {
     </div>
   );
 };
-
-export default PlaceDetails;

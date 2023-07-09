@@ -1,14 +1,12 @@
 import React from "react";
 import "./Navbar.scss";
 import styled from "styled-components";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { AllPlaces } from "../AllPlaces/AllPlaces";
-import { MyPlaces } from "../MyPlaces/MyPlaces";
-import PlaceDetails from "../PlaceDetails/PlaceDetails";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
+import Routes from "../Routes/Routes";
+import { BrowserRouter as Router } from "react-router-dom";
 
 export function NavBar() {
-  const NavBar = styled.div`
+  const NavbarContainer = styled.div`
     background-color: hsl(264.71deg 100% 16.67%);
     height: 10vh;
     box-sizing: border-box;
@@ -36,33 +34,24 @@ export function NavBar() {
   `;
   return (
     <Router>
-      <NavBar>
-        <Link to="/allPlaces">
-          <NavButton brand>Accessibility</NavButton>
-        </Link>
-        <Link to="/allPlaces">
-          <NavButton>All Places</NavButton>
-        </Link>
-        <Link to="/myPlaces">
-          <NavButton>My Places</NavButton>
-        </Link>
-        <SearchBar>
-          <label>Search:</label>
-          <input className="inputNav"></input>
-        </SearchBar>
-      </NavBar>
-      <Switch>
-        <ContentWrapper>
-          <Route exact path="/">
-            <Redirect to="/allPlaces" />
-          </Route>
-
-          <Route path="/home" component={AllPlaces} />
-          <Route path="/allPlaces" component={AllPlaces} />
-          <Route path="/myPlaces" component={MyPlaces} />
-          <Route path="/place-details/:id" component={PlaceDetails} />
-        </ContentWrapper>
-      </Switch>
+      <ContentWrapper>
+        <NavbarContainer>
+          <Link to="/allPlaces">
+            <NavButton brand>Accessibility</NavButton>
+          </Link>
+          <Link to="/allPlaces">
+            <NavButton>All Places</NavButton>
+          </Link>
+          <Link to="/myPlaces">
+            <NavButton>My Places</NavButton>
+          </Link>
+          <SearchBar>
+            <label>Search:</label>
+            <input className="inputNav" />
+          </SearchBar>
+        </NavbarContainer>
+        <Routes />
+      </ContentWrapper>
     </Router>
   );
 }

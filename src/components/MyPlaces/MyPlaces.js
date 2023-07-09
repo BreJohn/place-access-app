@@ -1,8 +1,5 @@
-import React from 'react';
+import React from "react";
 
-export function MyPlaces() {
-
-    return (
-        <div>THIS IS MY PLACES</div>
-    )
-}
+export const MyPlaces = () => {
+  return <div>THIS IS MY PLACES</div>;
+};
