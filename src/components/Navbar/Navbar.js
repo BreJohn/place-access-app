@@ -1,11 +1,11 @@
 import React from "react";
-import "./Navbar.css";
+import "./Navbar.scss";
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import App from "../../App";
 import { AllPlaces } from "../AllPlaces/AllPlaces";
 import { MyPlaces } from "../MyPlaces/MyPlaces";
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 export function NavBar() {
   const NavBar = styled.div`
@@ -53,7 +53,11 @@ export function NavBar() {
       </NavBar>
       <Switch>
         <ContentWrapper>
-          <Route path="/home" component={App} />
+          <Route exact path="/">
+            <Redirect to="/allPlaces" />
+          </Route>
+
+          <Route path="/home" component={AllPlaces} />
           <Route path="/allPlaces" component={AllPlaces} />
           <Route path="/myPlaces" component={MyPlaces} />
           <Route path="/place-details/:id" component={PlaceDetails} />

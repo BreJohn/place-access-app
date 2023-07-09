@@ -2,12 +2,12 @@ import React from "react";
 // @ts-ignore
 import places from "../../assets/Places.json";
 import { Place } from "../Place/Place.js";
-import "./AllPlaces.css";
+import classes from "./AllPlaces.module.scss";
 
 export function AllPlaces() {
   const placeArray = places;
   return (
-    <div className="place-container">
+    <div className={classes["place-container"]}>
       {placeArray.map((item) => (
         <Place placeInfo={item} key={item.index}></Place>
       ))}

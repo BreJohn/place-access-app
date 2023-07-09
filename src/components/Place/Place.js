@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./Place.css";
+import React from "react";
+import classes from "./Place.module.scss";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export function Place(props) {
@@ -7,9 +7,13 @@ export function Place(props) {
 
   return (
     <Link to={`/place-details/${placeInfo.index}`}>
-      <div className={`place-wrapper`}>
+      <div className={classes["place-wrapper"]}>
         <div className="title mt-6"> {placeInfo.name} </div>
-        <img className="placeImg" src={placeInfo.photo} alt="placeImg" />
+        <img
+          className={classes.placeImg}
+          src={placeInfo.photo}
+          alt="placeImg"
+        />
         <div className="details">
           <div className="location">
             <strong>Address: </strong>
