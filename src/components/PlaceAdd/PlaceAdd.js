@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import {
   Checkbox,
@@ -13,10 +13,28 @@ import classes from "./PlaceAdd.module.scss";
 export const PlaceAdd = (props) => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumberControl, setPhoneNumberControl] = useState({
+    value: "",
+    hasError: false,
+    errorText: "",
+  });
   const [isWCAccessible, setIsWCAccessible] = useState(false);
   const [totalStairs, setTotalStairs] = useState(0);
   const [accessibility, setAccessibility] = useState(0);
+
+  useEffect(() => {
+    if (phoneNumberControl.hasError) {
+      setPhoneNumberControl((prevState) => ({
+        ...prevState,
+        errorText: "Enter a valid phone number",
+      }));
+    } else {
+      setPhoneNumberControl((prevState) => ({
+        ...prevState,
+        errorText: "",
+      }));
+    }
+  }, [phoneNumberControl.hasError]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,11 +43,26 @@ export const PlaceAdd = (props) => {
       "Submitted!",
       name,
       address,
-      phoneNumber,
+      phoneNumberControl.value,
       isWCAccessible,
       totalStairs,
       accessibility
     );
+  };
+
+  const handlePhoneNumberBlur = (value) => {
+    if (!value) return;
+
+    setPhoneNumberControl((prevState) => ({
+      ...prevState,
+      hasError: !isValidPhoneNumber(value),
+    }));
+  };
+
+  const isValidPhoneNumber = (phoneNumber) => {
+    const phoneRegex = /^\d{9,10}$/;
+    const result = phoneRegex.test(phoneNumber);
+    return result;
   };
 
   return (
@@ -48,8 +81,15 @@ export const PlaceAdd = (props) => {
       />
       <TextField
         label="Phone Number"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        onChange={(e) =>
+          setPhoneNumberControl({
+            ...phoneNumberControl,
+            value: e.target.value,
+          })
+        }
+        onBlur={(e) => handlePhoneNumberBlur(e.target.value)}
+        error={!!phoneNumberControl.hasError}
+        helperText={phoneNumberControl.errorText}
         required
       />
       <TextField
