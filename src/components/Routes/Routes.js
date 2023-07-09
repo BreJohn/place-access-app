@@ -4,7 +4,6 @@ import { AllPlaces } from "../AllPlaces/AllPlaces";
 import { MyPlaces } from "../MyPlaces/MyPlaces";
 import { PlaceDetails } from "../PlaceDetails/PlaceDetails";
 import { PlaceAdd } from "../PlaceAdd/PlaceAdd";
-
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const Routes = () => {

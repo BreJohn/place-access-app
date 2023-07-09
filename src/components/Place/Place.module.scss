@@ -1,25 +1,25 @@
-.place-wrapper{
-    min-height: 350px;
-    padding: 18px;
-    width:25vw;
-    float:left;
-    box-sizing: border-box;
-    margin:12px 8px;
-    background-color: white;
-    min-width: 260px;
-    cursor: pointer;
-    max-height: 300px;
-    text-align: center;
-    &:hover {
-        background-color: hsl(0deg 0% 90%) !important;
-    }
+.place-wrapper {
+  min-height: 350px;
+  padding: 18px;
+  width: 25vw;
+  float: left;
+  box-sizing: border-box;
+  margin: 12px 8px;
+  background-color: white;
+  min-width: 260px;
+  cursor: pointer;
+  max-height: 300px;
+  text-align: center;
+  &:hover {
+    background-color: hsl(0deg 0% 90%) !important;
+  }
 }
 
 .placeImg {
-    width:300px;
-    height:200px;
+  max-width: 300px;
+  max-height: 200px;
 }
 
 .checked {
-    color: orange;
-  }
+  color: orange;
+}

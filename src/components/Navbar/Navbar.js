@@ -45,6 +45,9 @@ export function NavBar() {
           <Link to="/myPlaces">
             <NavButton>My Places</NavButton>
           </Link>
+          <Link to="/placeAdd">
+            <NavButton>Add a Place</NavButton>
+          </Link>
           <SearchBar>
             <label>Search:</label>
             <input className="inputNav" />
