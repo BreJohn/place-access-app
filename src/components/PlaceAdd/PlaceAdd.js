@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import { Checkbox, FormControlLabel, TextField } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  Rating,
+  TextField,
+  Typography,
+} from "@mui/material";
 import classes from "./PlaceAdd.module.scss";
+// import StarRatingComponent from "react-star-rating-component";
 
 export const PlaceAdd = (props) => {
   const [name, setName] = useState("");
@@ -45,7 +52,6 @@ export const PlaceAdd = (props) => {
         onChange={(e) => setPhoneNumber(e.target.value)}
         required
       />
-
       <TextField
         label="Total Stairs"
         type="number"
@@ -53,13 +59,28 @@ export const PlaceAdd = (props) => {
         onChange={(e) => setTotalStairs(Number(e.target.value))}
         required
       />
-      <TextField
-        label="Accessibility"
-        type="number"
-        value={accessibility}
-        onChange={(e) => setAccessibility(Number(e.target.value))}
-        required
-      />
+      {/* <div className={classes.accessibility}>
+        Accessibility:
+        <StarRatingComponent
+          name="accessibility"
+          value={accessibility}
+          onStarClick={setAccessibility}
+          starCount={5}
+          starColor="#FFD700"
+          emptyStarColor="#808080"
+        />
+      </div> */}
+      <div>
+        <Typography component="legend">Accessibility</Typography>
+
+        <Rating
+          name="accessibility"
+          value={accessibility}
+          onChange={(event, newValue) => {
+            setAccessibility(newValue);
+          }}
+        />
+      </div>
       <FormControlLabel
         control={
           <Checkbox
