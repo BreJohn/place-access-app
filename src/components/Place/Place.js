@@ -6,7 +6,7 @@ export function Place(props) {
   const { placeInfo } = props;
 
   return (
-    <Link to={`/place-details/${placeInfo.index}`}>
+    <Link to={`/place-details/${placeInfo.id}`}>
       <div className={classes["place-wrapper"]}>
         <div className="title mt-6"> {placeInfo.name} </div>
         <img

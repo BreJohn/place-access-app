@@ -1,15 +1,16 @@
 import React from "react";
 // @ts-ignore
-import places from "../../assets/Places.json";
 import { Place } from "../Place/Place.js";
 import classes from "./AllPlaces.module.scss";
+import { useContext } from "react";
+import PlacesContext from "../../store/places-context";
 
 export const AllPlaces = () => {
-  const placeArray = places;
+  const placesContext = useContext(PlacesContext);
   return (
     <div className={classes["place-container"]}>
-      {placeArray.map((item) => (
-        <Place placeInfo={item} key={item.index}></Place>
+      {placesContext.places.map((item) => (
+        <Place placeInfo={item} key={item.id}></Place>
       ))}
     </div>
   );

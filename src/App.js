@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { NavBar } from "./components/NavBar/NavBar";
+import PlacesContext from "./store/places-context";
+import { mapGooglePlacesToPlaces } from "./utils/utils";
 
-// const loadGoogleMapsAPI = () => {
-//   const script = document.createElement("script");
-//   script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAFrSxpFH-DUeF5PrXlAO3BhaV7A0sIBdA&callback=initMap&libraries=places`;
-//   script.defer = true;
-//   script.async = true;
-//   document.body.appendChild(script);
-// };
+const loadGoogleMapsAPI = () => {
+  const script = document.createElement("script");
+  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAFrSxpFH-DUeF5PrXlAO3BhaV7A0sIBdA&callback=initMap&libraries=places`;
+  script.defer = true;
+  script.async = true;
+  document.body.appendChild(script);
+};
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -27,7 +29,9 @@ function App() {
     };
 
     const service = new window.google.maps.places.PlacesService(map);
-    service.nearbySearch(request, (res) => console.log(res));
+    service.nearbySearch(request, (res) => {
+      setPlaces(mapGooglePlacesToPlaces(res));
+    });
   };
 
   useEffect(() => {
@@ -52,7 +56,7 @@ function App() {
       );
     };
     window.initMap = initMap;
-    // loadGoogleMapsAPI();
+    loadGoogleMapsAPI();
 
     // Cleanup function to remove the dynamically added script tag
     return () => {
@@ -66,10 +70,10 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <PlacesContext.Provider value={{ places }}>
       <NavBar />
       <div id="map"></div>
-    </div>
+    </PlacesContext.Provider>
   );
 }
 
