@@ -20,12 +20,19 @@ export function Place(props) {
             {placeInfo.address}
           </div>
           <div className="accessibility">
-            <strong>Accessibility: </strong>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
+            <strong>Rating: </strong>
+            {Array(5)
+              .fill("")
+              .map((_, index) => {
+                return (
+                  <span
+                    key={index}
+                    className={`fa fa-star ${
+                      placeInfo.rating > index + 1 ? classes.checked : ""
+                    }`}
+                  ></span>
+                );
+              })}
           </div>
           <div className="stairs">
             <strong>Total stairs: </strong>
