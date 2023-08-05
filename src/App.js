@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./App.scss";
 import { NavBar } from "./components/NavBar/NavBar";
-import PlacesContext from "./store/places-context";
 import { mapGooglePlacesToPlaces } from "./utils/utils";
 import { key } from "./assets/googleApiKey";
 import { useDispatch, useSelector } from "react-redux";
+import { Fragment } from "react";
 
 const loadGoogleMapsAPI = () => {
   const script = document.createElement("script");
@@ -16,7 +16,6 @@ const loadGoogleMapsAPI = () => {
 
 function App() {
   const dispatch = useDispatch();
-  const places = useSelector((state) => state.places);
 
   const getNearbyPlaces = (lat, long) => {
     const athens = new window.google.maps.LatLng(lat, long);
@@ -80,10 +79,10 @@ function App() {
   }, []);
 
   return (
-    <PlacesContext.Provider value={{ places }}>
+    <Fragment>
       <NavBar />
       <div id="map"></div>
-    </PlacesContext.Provider>
+    </Fragment>
   );
 }
 
