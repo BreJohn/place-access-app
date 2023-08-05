@@ -1,18 +1,20 @@
 import React from "react";
 // @ts-ignore
-import { Place } from "../Place/Place.js";
-import classes from "./AllPlaces.module.scss";
+import {
+  GooglePlace,
+  Place,
+} from "../../components/GooglePlace/GooglePlace.js";
+import classes from "./GooglePlaces.module.scss";
 import { useSelector } from "react-redux";
 
-export const AllPlaces = () => {
+export const GooglePlaces = () => {
   const googlePlaces = useSelector((state) => state.googlePlaces);
 
-  // const placesContext = useContext(PlacesContext);
   return (
     <div className={classes["place-container"]}>
       {googlePlaces.length
         ? googlePlaces.map((item) => (
-            <Place placeInfo={item} key={item.id}></Place>
+            <GooglePlace placeInfo={item} key={item.id}></GooglePlace>
           ))
         : []}
     </div>

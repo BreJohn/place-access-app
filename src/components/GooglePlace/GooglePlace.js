@@ -1,12 +1,12 @@
 import React from "react";
-import classes from "./Place.module.scss";
+import classes from "./GooglePlace.module.scss";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-export function Place(props) {
+export function GooglePlace(props) {
   const { placeInfo } = props;
 
   return (
-    <Link to={`/place-details/${placeInfo.id}`}>
+    <Link to={`/googlePlaces/${placeInfo.id}`}>
       <div className={classes["place-wrapper"]}>
         <div className="title mt-6"> {placeInfo.name} </div>
         <img

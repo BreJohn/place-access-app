@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { Checkbox, FormControlLabel, Rating, Typography } from "@mui/material";
 import classes from "./PlaceAdd.module.scss";
-import { CustomFormControl } from "../UI/CustomFormControl";
+import { CustomFormControl } from "../../components/UI/CustomFormControl";
+
 export const PlaceAdd = (props) => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");

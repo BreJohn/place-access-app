@@ -36,14 +36,11 @@ export function NavBar() {
     <Router>
       <ContentWrapper>
         <NavbarContainer>
-          <Link to="/allPlaces">
+          <Link to="/home">
             <NavButton brand>Accessibility</NavButton>
           </Link>
-          <Link to="/allPlaces">
-            <NavButton>All Places</NavButton>
-          </Link>
-          <Link to="/myPlaces">
-            <NavButton>My Places</NavButton>
+          <Link to="/googlePlaces">
+            <NavButton>Google Places</NavButton>
           </Link>
           <Link to="/placeAdd">
             <NavButton>Add a Place</NavButton>

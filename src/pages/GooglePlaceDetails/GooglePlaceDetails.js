@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import classes from "./PlaceDetails.module.scss";
+import classes from "./GooglePlaceDetails.module.scss";
 import entranceImg from "../../assets/entrance.jpg";
 import mainAreaImg from "../../assets/main-area.jpg";
 import wcImg from "../../assets/wc.jpg";
 
-export const PlaceDetails = (props) => {
+export const GooglePlaceDetails = (props) => {
   const { id } = useParams();
   return (
     <div className="text-center">
