@@ -4,6 +4,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 import PlacesContext from "./store/places-context";
 import { mapGooglePlacesToPlaces } from "./utils/utils";
 import { key } from "./assets/googleApiKey";
+import { useDispatch, useSelector } from "react-redux";
 
 const loadGoogleMapsAPI = () => {
   const script = document.createElement("script");
@@ -14,7 +15,8 @@ const loadGoogleMapsAPI = () => {
 };
 
 function App() {
-  const [places, setPlaces] = useState([]);
+  const dispatch = useDispatch();
+  const places = useSelector((state) => state.places);
 
   const getNearbyPlaces = (lat, long) => {
     const athens = new window.google.maps.LatLng(lat, long);
@@ -31,7 +33,14 @@ function App() {
 
     const service = new window.google.maps.places.PlacesService(map);
     service.nearbySearch(request, (res) => {
-      setPlaces(mapGooglePlacesToPlaces(res));
+      saveGooglePlacesToStore(mapGooglePlacesToPlaces(res));
+    });
+  };
+
+  const saveGooglePlacesToStore = (places) => {
+    dispatch({
+      type: "SAVE_GOOGLE_PLACES",
+      payload: places,
     });
   };
 
