@@ -3,9 +3,9 @@ import "./App.scss";
 import { NavBar } from "./components/NavBar/NavBar";
 import { mapGooglePlacesToPlaces } from "./utils/utils";
 import { key } from "./assets/googleApiKey";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Fragment } from "react";
-
+import { useRef } from "react";
 const loadGoogleMapsAPI = () => {
   const script = document.createElement("script");
   script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&libraries=places`;
@@ -42,6 +42,8 @@ function App() {
       payload: places,
     });
   };
+
+  const dataRef = useRef();
 
   useEffect(() => {
     const initMap = () => {
