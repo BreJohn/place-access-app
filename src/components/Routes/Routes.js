@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { GooglePlaces } from "../../pages/GooglePlaces/GooglePlaces";
 import { PlaceAdd } from "../../pages/PlaceAdd/PlaceAdd";
 import { GooglePlaceDetails } from "../../pages/GooglePlaceDetails/GooglePlaceDetails";
+import { Login } from "../../pages/Auth/Login/Login";
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
       <Route path="/placeAdd" component={PlaceAdd} />
 
       <Route path="/googlePlaces/:id" component={GooglePlaceDetails} />
+      <Route path="/login" component={Login} />
       <Redirect from="/" to="/home" />
     </Switch>
   );

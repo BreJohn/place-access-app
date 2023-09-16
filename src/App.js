@@ -6,6 +6,8 @@ import { key } from "./assets/googleApiKey";
 import { useDispatch } from "react-redux";
 import { Fragment } from "react";
 import { useRef } from "react";
+import { googlePlacesActions } from "./store/googleplaces";
+
 const loadGoogleMapsAPI = () => {
   const script = document.createElement("script");
   script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&libraries=places`;
@@ -37,13 +39,8 @@ function App() {
   };
 
   const saveGooglePlacesToStore = (places) => {
-    dispatch({
-      type: "SAVE_GOOGLE_PLACES",
-      payload: places,
-    });
+    dispatch(googlePlacesActions.saveGooglePlaces(places));
   };
-
-  const dataRef = useRef();
 
   useEffect(() => {
     const initMap = () => {

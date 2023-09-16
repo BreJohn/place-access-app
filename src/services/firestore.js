@@ -1,7 +1,7 @@
 import { addDoc, collection, doc, setDoc } from "@firebase/firestore";
-import { firestore } from "./index";
+import { firestore } from "../firebase_setup/index";
 
-const handleSubmit = (places) => {
+const saveGooglePlacesToDB = (places) => {
   const ref = collection(firestore, "google_places"); // Firebase creates this automatically
 
   let data = {
