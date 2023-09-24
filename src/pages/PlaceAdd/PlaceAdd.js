@@ -24,10 +24,6 @@ export const PlaceAdd = (props) => {
     return !result;
   };
 
-  const testTata = (val) => {
-    console.log(val);
-  };
-
   return (
     <form className={classes} onSubmit={handleSubmit}>
       <CustomFormControl

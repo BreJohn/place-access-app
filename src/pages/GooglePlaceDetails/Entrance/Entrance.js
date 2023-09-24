@@ -5,7 +5,9 @@ import classes from "./Entrance.module.scss";
 
 export const Entrance = (props) => {
   const { id } = useParams();
-  const places = useSelector((state) => state.googlePlaces.googlePlaces);
+  const places = useSelector((state) => state.googlePlaces.googlePlaces).filter(
+    (place) => place.id === id
+  );
   console.log("Entrance", places);
   return <div className="text-center"></div>;
 };

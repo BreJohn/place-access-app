@@ -14,19 +14,19 @@ export const GooglePlaceDetails = (props) => {
       <h1> PLACE ID {id}</h1>
       <div className={classes["place-details-wrapper"]}>
         <div className="entrance">
-          <Link to={`entrance`}>
+          <Link to={`${id}/entrance`}>
             <div className="title">Entrance</div>
             <img src={entranceImg} alt="Entrance"></img>
           </Link>
         </div>
         <div className="main-area">
-          <Link to={`main-area`}>
+          <Link to={`${id}/main-area`}>
             <div className="title">Main Area</div>
             <img src={mainAreaImg} alt="Main Area"></img>
           </Link>
         </div>
         <div className="wc">
-          <Link to={`wc`}>
+          <Link to={`${id}/wc`}>
             <div className="title">WC</div>
             <img src={wcImg} alt="WC"></img>
           </Link>

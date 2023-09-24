@@ -18,10 +18,10 @@ const Routes = () => {
       <Route exact path="/googlePlaces" component={GooglePlaces} />
       <Route path="/placeAdd" component={PlaceAdd} />
 
-      <Route path="/googlePlaces/:id" component={GooglePlaceDetails} />
       <Route path="/googlePlaces/:id/entrance" component={Entrance} />
       <Route path="/googlePlaces/:id/main-area" component={MainArea} />
       <Route path="/googlePlaces/:id/wc" component={WC} />
+      <Route path="/googlePlaces/:id" component={GooglePlaceDetails} />
 
       <Route path="/login" component={Login} />
       <Redirect from="/" to="/home" />
