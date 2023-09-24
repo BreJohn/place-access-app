@@ -1,24 +1,22 @@
 .place-details-wrapper {
   display: flex;
-  cursor: pointer;
   justify-content: center;
   margin: 0px 16px;
   flex-wrap: wrap;
+  gap: 32px;
 
+  > div {
+    cursor: pointer;
 
-> div {
-  min-width: 400px;
-  width: 30vw;
-  background-color: white;
-  margin: 16px;
-  text-align: center;
-  padding: 8px 4px 0px 4px;
-  height: 500px;
-  &:hover {
-    background-color: hsl(0deg 0% 90%) !important;
+    min-width: 400px;
+    width: 30vw;
+    background-color: white;
+    text-align: center;
+    height: 500px;
+    &:hover {
+      background-color: hsl(0deg 0% 90%) !important;
+    }
   }
-}
-
 }
 
 .title {

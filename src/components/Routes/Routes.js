@@ -6,6 +6,9 @@ import { GooglePlaces } from "../../pages/GooglePlaces/GooglePlaces";
 import { PlaceAdd } from "../../pages/PlaceAdd/PlaceAdd";
 import { GooglePlaceDetails } from "../../pages/GooglePlaceDetails/GooglePlaceDetails";
 import { Login } from "../../pages/Auth/Login/Login";
+import { Entrance } from "../../pages/GooglePlaceDetails/Entrance/Entrance";
+import { WC } from "../../pages/GooglePlaceDetails/WC/WC";
+import { MainArea } from "../../pages/GooglePlaceDetails/MainArea/MainArea";
 
 const Routes = () => {
   return (
@@ -16,6 +19,10 @@ const Routes = () => {
       <Route path="/placeAdd" component={PlaceAdd} />
 
       <Route path="/googlePlaces/:id" component={GooglePlaceDetails} />
+      <Route path="/googlePlaces/:id/entrance" component={Entrance} />
+      <Route path="/googlePlaces/:id/main-area" component={MainArea} />
+      <Route path="/googlePlaces/:id/wc" component={WC} />
+
       <Route path="/login" component={Login} />
       <Redirect from="/" to="/home" />
     </Switch>

@@ -50,3 +50,8 @@ code {
 .mt-6 {
   margin-bottom: 6px;
 }
+
+a {
+  text-decoration: none;
+  color:inherit;
+}

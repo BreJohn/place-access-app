@@ -23,4 +23,4 @@ const saveGooglePlacesToDB = (places) => {
   }
 };
 
-export default handleSubmit;
+export default saveGooglePlacesToDB;

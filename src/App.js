@@ -5,7 +5,6 @@ import { mapGooglePlacesToPlaces } from "./utils/utils";
 import { key } from "./assets/googleApiKey";
 import { useDispatch } from "react-redux";
 import { Fragment } from "react";
-import { useRef } from "react";
 import { googlePlacesActions } from "./store/googleplaces";
 
 const loadGoogleMapsAPI = () => {
@@ -48,7 +47,7 @@ function App() {
 
       // Use the google object and perform the geocoding
       const geocoder = new google.maps.Geocoder();
-      const address = "Athens";
+      const address = "Ilion";
 
       geocoder.geocode(
         {
