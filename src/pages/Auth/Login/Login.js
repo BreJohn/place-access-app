@@ -16,7 +16,7 @@ export const Login = (props) => {
   };
 
   return (
-    <form className={classes} onSubmit={handleSubmit}>
+    <form className="general-form" onSubmit={handleSubmit}>
       <CustomFormControl
         label="Username"
         required={true}

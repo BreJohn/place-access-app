@@ -1,0 +1,12 @@
+.container {
+  margin: 32px;
+}
+
+.stairs {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  div {
+    height: 100%;
+  }
+}

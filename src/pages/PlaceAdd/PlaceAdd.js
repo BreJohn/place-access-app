@@ -25,7 +25,7 @@ export const PlaceAdd = (props) => {
   };
 
   return (
-    <form className={classes} onSubmit={handleSubmit}>
+    <form className="general-form" onSubmit={handleSubmit}>
       <CustomFormControl
         label="Name"
         required={true}
