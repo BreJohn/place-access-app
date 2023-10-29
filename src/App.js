@@ -64,7 +64,6 @@ function App() {
     };
     window.initMap = initMap;
     loadGoogleMapsAPI();
-
     // Cleanup function to remove the dynamically added script tag
     return () => {
       const script = document.querySelector(

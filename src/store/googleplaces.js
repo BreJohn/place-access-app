@@ -10,7 +10,7 @@ const googlePlacesSlice = createSlice({
   reducers: {
     saveGooglePlaces(state, action) {
       state.googlePlaces = [...state.googlePlaces, ...action.payload];
-      saveGooglePlacesToDB(state.googlePlaces);
+      // saveGooglePlacesToDB(state.googlePlaces);
     },
     update() {},
     delete() {},

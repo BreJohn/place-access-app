@@ -1,12 +1,20 @@
 .container {
   margin: 32px;
+  max-width: 450px;
 }
 
-.stairs {
+.group {
   display: flex;
   align-items: center;
   min-height: 50px;
   div {
     height: 100%;
   }
+  gap: 8px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

@@ -6,7 +6,6 @@ import Routes from "../Routes/Routes";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import { authActions } from "../../store/auth";
 

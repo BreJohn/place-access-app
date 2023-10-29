@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import { TextField } from "@mui/material";
 
 export const CustomFormControl = ({
-  label,
-  defaultValue,
-  validator,
+  value,
   onBlur,
   onChange,
-  required,
   ...restProps
 }) => {
   const [formControl, setFormControl] = useState({
     hasError: false,
-    errorText: `${label} is not valid`,
+    errorText: `${restProps.label} is not valid`,
     isTouched: false,
-    validator: validator,
+    required: false,
+    ...restProps,
   });
 
   const handleOnBlur = (e) => {
-    const hasError = validator ? validator(e.target.value) : false;
+    const hasError = restProps.validator
+      ? restProps.validator(e.target.value)
+      : false;
     setFormControl((prevState) => ({
       ...prevState,
       isTouched: true,
@@ -32,16 +32,28 @@ export const CustomFormControl = ({
       ...formControl,
       value: e.target.value,
       hasError:
-        formControl.isTouched && validator
-          ? validator(e.target.value)
+        formControl.isTouched && restProps.validator
+          ? restProps.validator(e.target.value)
           : formControl.hasError,
     });
     onChange && onChange(e);
   };
-
-  return (
+  const numberInput = (
     <TextField
-      label={label}
+      inputProps={{
+        type: "number",
+        inputMode: "numeric",
+        pattern: "[0-9]*",
+        min: restProps.min,
+      }}
+      {...restProps}
+    />
+  );
+
+  return restProps.numeric ? (
+    numberInput
+  ) : (
+    <TextField
       onChange={(e) => handleOnChange(e)}
       onBlur={(e) => handleOnBlur(e)}
       error={!!formControl.hasError}
@@ -50,7 +62,6 @@ export const CustomFormControl = ({
           ? formControl.errorText
           : ""
       }
-      required={required}
       {...restProps}
     />
   );
