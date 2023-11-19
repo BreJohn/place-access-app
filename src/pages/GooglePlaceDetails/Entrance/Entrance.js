@@ -8,37 +8,37 @@ import { useState } from "react";
 import { UploadImage } from "../../../components/UI/UploadImage";
 
 export const Entrance = (props) => {
-  const [hasStairs, setHasStairs] = useState(false);
-  const [steps, setSteps] = useState("");
-  const [stepWidth, setStepWidth] = useState("");
-  const [doorWidth, setDoorWidth] = useState("");
-  const [doorHeight, setDoorHeight] = useState("");
+  // const [hasStairs, setHasStairs] = useState(false);
+  // const [steps, setSteps] = useState("");
+  // const [stepWidth, setStepWidth] = useState("");
+  // const [doorWidth, setDoorWidth] = useState("");
+  // const [doorHeight, setDoorHeight] = useState("");
 
-  const [image, setImage] = useState();
+  const [enteredValues, setEnteredValues] = useState({
+    hasStairs: false,
+    steps: "",
+    stepWidth: "",
+    doorWidth: "",
+    doorHeigth: "",
+    image: "",
+  });
 
   const { id } = useParams();
+
   const place = useSelector((state) => state.googlePlaces.googlePlaces).filter(
     (place) => place.id === id
   );
 
-  const onSetHasStairs = (value) => {
-    setHasStairs(value);
+  const onSetValue = (value, key) => {
+    setEnteredValues((prevValues) => ({
+      ...prevValues,
+      [key]: value,
+    }));
   };
 
-  const onSetSteps = (value) => {
-    setSteps(value);
-  };
-
-  const onSetStepWidth = (value) => {
-    stepWidth(value);
-  };
-
-  const onSetDoorWidth = (value) => {
-    setDoorWidth(value);
-  };
-
-  const onSetDoorHeight = (value) => {
-    setDoorHeight(value);
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(enteredValues);
   };
 
   // const handleImageUpload = (e) => {
@@ -65,19 +65,30 @@ export const Entrance = (props) => {
 
   const onSelectImage = (e) => {
     if (!e.target.files || e.target.files.length === 0) {
-      setImage(undefined);
+      setEnteredValues((prevValues) => ({
+        ...prevValues,
+        image: undefined,
+      }));
       return;
     }
 
     // I've kept this example simple by using the first image instead of multiple
     if (!e.target.files[0]) {
-      setImage(undefined);
+      setEnteredValues((prevValues) => ({
+        ...prevValues,
+        image: undefined,
+      }));
       return;
     }
 
     const objectUrl = URL.createObjectURL(e.target.files[0]);
-    setImage(objectUrl);
-
+    setEnteredValues((prevValues) => ({
+      ...prevValues,
+      image: {
+        objectUrl,
+        file: e.target.files[0],
+      },
+    }));
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   };
@@ -85,14 +96,14 @@ export const Entrance = (props) => {
   return (
     <div className={classes.container}>
       <h1>Entrance Accessibility Information</h1>
-      <form>
+      <form onSubmit={onFormSubmit}>
         <div className={classes.controls}>
           <div className={classes.group}>
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={hasStairs}
-                  onChange={(e) => onSetHasStairs(e.target.checked)}
+                  checked={enteredValues.hasStairs}
+                  onChange={(e) => onSetValue(e.target.checked, "hasStairs")}
                 />
               }
               label="Stairs"
@@ -101,18 +112,18 @@ export const Entrance = (props) => {
             <CustomFormControl
               label="Steps"
               required={true}
-              value={steps}
-              disabled={!hasStairs}
+              value={enteredValues.steps}
+              disabled={!enteredValues.hasStairs}
               numeric="true"
-              onChange={(e) => onSetSteps(e.target.value)}
+              onChange={(e) => onSetValue(e.target.checked, "steps")}
               min={1}
             />
             <CustomFormControl
               label="Width"
               required={true}
-              value={stepWidth}
-              disabled={!hasStairs}
-              onChange={(e) => onSetStepWidth(e.target.value)}
+              value={enteredValues.stepWidth}
+              disabled={!enteredValues.hasStairs}
+              onChange={(e) => onSetValue(e.target.checked, "stepWidth")}
             />
             <span>CM</span>
           </div>
@@ -120,23 +131,28 @@ export const Entrance = (props) => {
             <CustomFormControl
               label="Door Width"
               required={true}
-              value={doorWidth}
-              onChange={(e) => onSetDoorWidth(e.target.value)}
+              value={enteredValues.doorWidth}
+              onChange={(e) => onSetValue(e.target.checked, "doorWidth")}
             />
             <span>CM</span>
 
             <CustomFormControl
               label="Door Height"
               required={true}
-              value={doorHeight}
-              onChange={(e) => onSetDoorHeight(e.target.value)}
+              value={enteredValues.doorHeight}
+              onChange={(e) => onSetValue(e.target.checked, "doorHeight")}
             />
             <span>CM</span>
           </div>
 
-          <UploadImage image={image} onSelectImage={onSelectImage} />
+          <UploadImage
+            image={enteredValues.image.objectUrl}
+            onSelectImage={onSelectImage}
+          />
 
-          <Button variant="contained">Submit</Button>
+          <Button type="submit" variant="contained">
+            Submit
+          </Button>
         </div>
       </form>
     </div>
