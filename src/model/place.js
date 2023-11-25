@@ -4,4 +4,5 @@ export const Place = {
   photo: "",
   rating: "",
   address: "",
+  accessibility: {},
 };

@@ -3,7 +3,7 @@ export const mapGooglePlacesToPlaces = (googlePlaces) => {
     id: place.place_id,
     name: place.name,
     photo: place.photos ? place.photos[0].getUrl() : null,
-    rating: place.rating,
+    rating: place.rating ?? "",
     address: place.vicinity,
   }));
 };

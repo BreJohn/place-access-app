@@ -1,7 +1,14 @@
-import { addDoc, collection, doc, setDoc } from "@firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  setDoc,
+  query,
+  getDocs,
+} from "@firebase/firestore";
 import { firestore } from "../firebase_setup/index";
 
-const saveGooglePlacesToDB = (places) => {
+export const saveGooglePlacesToDB = (places) => {
   const ref = collection(firestore, "google_places"); // Firebase creates this automatically
 
   let data = {
@@ -23,4 +30,28 @@ const saveGooglePlacesToDB = (places) => {
   }
 };
 
-export default saveGooglePlacesToDB;
+export const saveGooglePlaceToDB = (place) => {
+  const ref = collection(firestore, "places"); // Firebase creates this automatically
+
+  try {
+    setDoc(doc(firestore, "places", place.id), {
+      ...place,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getAccessPlaces = async () => {
+  const q = query(collection(firestore, "places"));
+
+  const querySnapshot = await getDocs(q);
+  let accessPlaces = [];
+  querySnapshot.forEach((doc) => {
+    accessPlaces.push({
+      id: doc.id,
+      ...doc.data(),
+    });
+  });
+  return accessPlaces;
+};

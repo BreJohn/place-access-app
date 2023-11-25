@@ -6,6 +6,7 @@ import { CustomFormControl } from "../../../components/UI/CustomFormControl";
 import { Button, Checkbox, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import { UploadImage } from "../../../components/UI/UploadImage";
+import { saveGooglePlaceToDB } from "../../../services/firestore";
 
 export const Entrance = (props) => {
   const [enteredValues, setEnteredValues] = useState({
@@ -19,9 +20,9 @@ export const Entrance = (props) => {
 
   const { id } = useParams();
 
-  const place = useSelector((state) => state.googlePlaces.googlePlaces).filter(
-    (place) => place.id === id
-  );
+  const place = useSelector((state) => {
+    return state.googlePlaces.googlePlaces;
+  }).filter((place) => place.id === id);
 
   const onSetValue = (value, key) => {
     setEnteredValues((prevValues) => ({
@@ -56,12 +57,15 @@ export const Entrance = (props) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
     const fd = new FormData(event.target);
     fd.append("image", enteredValues.image.file);
     const data = Object.fromEntries(fd.entries());
-    console.log(data);
     onReset(event);
+    const entrance = { entrance: data };
+    const accessPlace = { ...place[0], accessibility: entrance };
+    saveGooglePlaceToDB(accessPlace);
+
+    console.log(accessPlace);
   };
 
   const onReset = (event) => {
@@ -75,27 +79,6 @@ export const Entrance = (props) => {
     }));
   };
 
-  // const handleImageUpload = (e) => {
-  //   const imageURL = URL.createObjectURL(e.target.files[0]); // Create a URL for the selected image
-
-  //   setImage((prevState) => ({
-  //     ...prevState,
-  //     image: imageURL.toString(), // Create a preview URL for the selected image
-  //   }));
-  // };
-
-  // useEffect(() => {
-  //   if (!selectedFile) {
-  //     setPreview(undefined);
-  //     return;
-  //   }
-
-  //   const objectUrl = URL.createObjectURL(selectedFile);
-  //   setPreview(objectUrl);
-
-  //   // free memory when ever this component is unmounted
-  //   return () => URL.revokeObjectURL(objectUrl);
-  // }, [selectedFile]);
   return (
     <div className={classes.container}>
       <h1>Entrance Accessibility Information</h1>

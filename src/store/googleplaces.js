@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import saveGooglePlacesToDB from "../services/firestore";
-import { firestore } from "../firebase_setup";
 
 const initialGooglePlacesState = { googlePlaces: [] };
 
