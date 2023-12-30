@@ -1,13 +1,8 @@
 import React from "react";
 import classes from "./Home.module.scss";
-import { getAccessPlaces } from "../../services/firestore";
-import { GooglePlace } from "../../components/GooglePlace/GooglePlace";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchAccessPlaces } from "../../store/accessPlaces";
-
+import { Place } from "../../components/Place/Place";
+import { useSelector } from "react-redux";
 export const Home = () => {
-  const dispatch = useDispatch();
   // const placesContext = useContext(PlacesContext);
 
   const accessPlaces = useSelector((state) => {
@@ -15,16 +10,12 @@ export const Home = () => {
     return state.accessPlaces.accessPlaces;
   });
 
-  useEffect(() => {
-    dispatch(fetchAccessPlaces());
-  }, [dispatch]);
-
   console.log("HOME");
   return (
-    <div className={classes["place-container"]}>
+    <div className="place-container">
       {accessPlaces.length
         ? accessPlaces.map((item) => (
-            <GooglePlace placeInfo={item} key={item.id}></GooglePlace>
+            <Place placeInfo={item} key={item.id}></Place>
           ))
         : []}
     </div>

@@ -6,6 +6,7 @@ import { key } from "./assets/googleApiKey";
 import { useDispatch } from "react-redux";
 import { Fragment } from "react";
 import { googlePlacesActions } from "./store/googleplaces";
+import { fetchAccessPlaces } from "./store/actions/access-places-actions";
 
 const loadGoogleMapsAPI = () => {
   const script = document.createElement("script");
@@ -40,6 +41,10 @@ function App() {
   const saveGooglePlacesToStore = (places) => {
     dispatch(googlePlacesActions.saveGooglePlaces(places));
   };
+
+  useEffect(() => {
+    dispatch(fetchAccessPlaces());
+  }, [dispatch]);
 
   useEffect(() => {
     const initMap = () => {

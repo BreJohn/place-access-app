@@ -6,7 +6,11 @@ import { CustomFormControl } from "../../../components/UI/CustomFormControl";
 import { Button, Checkbox, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import { UploadImage } from "../../../components/UI/UploadImage";
-import { saveGooglePlaceToDB } from "../../../services/firestore";
+import {
+  downloadImageFromDB,
+  saveGooglePlaceToDB,
+} from "../../../services/firestore";
+import { useMemo } from "react";
 
 export const Entrance = (props) => {
   const [enteredValues, setEnteredValues] = useState({
@@ -15,14 +19,30 @@ export const Entrance = (props) => {
     stepWidth: "",
     doorWidth: "",
     doorHeight: "",
-    image: {},
   });
 
+  const [image, setImage] = useState(null);
+
   const { id } = useParams();
+  useEffect(async () => {
+    const url = await downloadImageFromDB(id, "entrance");
+    setImage({ objectUrl: url });
+  }, []);
+  const isGoogleOnly = window.location.href.includes("google");
 
   const place = useSelector((state) => {
-    return state.googlePlaces.googlePlaces;
-  }).filter((place) => place.id === id);
+    return isGoogleOnly
+      ? state.googlePlaces.googlePlaces.filter((place) => place.id === id)[0]
+      : state.accessPlaces.accessPlaces.filter((place) => place.id === id)[0];
+  });
+
+  // Memoize the place using useMemo
+  useMemo(() => {
+    if (place && place.accessibility.entrance) {
+      setEnteredValues({ ...place.accessibility.entrance });
+      return;
+    }
+  }, [place]);
 
   const onSetValue = (value, key) => {
     setEnteredValues((prevValues) => ({
@@ -33,7 +53,7 @@ export const Entrance = (props) => {
 
   const onSelectImage = (e) => {
     if (!e.target.files || e.target.files.length === 0 || !e.target.files[0]) {
-      setEnteredValues((prevValues) => ({ ...prevValues, image: {} }));
+      setImage(null);
       return;
     }
 
@@ -44,39 +64,38 @@ export const Entrance = (props) => {
     }
 
     const objectUrl = URL.createObjectURL(e.target.files[0]);
-    setEnteredValues((prevValues) => ({
-      ...prevValues,
-      image: {
-        objectUrl,
-        file: e.target.files[0],
-      },
-    }));
+    setImage({
+      objectUrl,
+      file: e.target.files[0],
+    });
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   };
 
   const onFormSubmit = (event) => {
+    console.log(enteredValues);
     event.preventDefault();
     const fd = new FormData(event.target);
-    fd.append("image", enteredValues.image.file);
-    const data = Object.fromEntries(fd.entries());
-    onReset(event);
-    const entrance = { entrance: data };
-    const accessPlace = { ...place[0], accessibility: entrance };
-    saveGooglePlaceToDB(accessPlace);
 
-    console.log(accessPlace);
+    const data = Object.fromEntries(fd.entries());
+
+    const entrance = {
+      entrance: { ...data, hasStairs: data.hasStairs === "on" },
+    };
+    const accessPlace = { ...place, accessibility: { ...entrance } };
+
+    saveGooglePlaceToDB(accessPlace, image, "entrance");
+    // console.log(accessPlace);
   };
 
   const onReset = (event) => {
-    setEnteredValues((prevValues) => ({
+    setEnteredValues({
       hasStairs: false,
       steps: "",
       stepWidth: "",
       doorWidth: "",
       doorHeight: "",
-      image: {},
-    }));
+    });
   };
 
   return (
@@ -102,7 +121,7 @@ export const Entrance = (props) => {
               value={enteredValues.steps}
               disabled={!enteredValues.hasStairs}
               numeric="true"
-              onChange={(e) => onSetValue(e.target.checked, "steps")}
+              onChange={(e) => onSetValue(e.target.value, "steps")}
               min={1}
               name="steps"
             />
@@ -111,38 +130,35 @@ export const Entrance = (props) => {
               required={true}
               value={enteredValues.stepWidth}
               disabled={!enteredValues.hasStairs}
-              onChange={(e) => onSetValue(e.target.checked, "stepWidth")}
+              onChange={(e) => onSetValue(e.target.value, "stepWidth")}
               name="stepWidth"
             />
-            <span>CM</span>
+            <span>cm</span>
           </div>
           <div className={classes.group}>
             <CustomFormControl
               label="Door Width"
               required={true}
               value={enteredValues.doorWidth}
-              onChange={(e) => onSetValue(e.target.checked, "doorWidth")}
+              onChange={(e) => onSetValue(e.target.value, "doorWidth")}
               name="doorWidth"
             />
-            <span>CM</span>
+            <span>cm</span>
 
             <CustomFormControl
               label="Door Height"
               required={true}
               value={enteredValues.doorHeight}
-              onChange={(e) => onSetValue(e.target.checked, "doorHeight")}
+              onChange={(e) => onSetValue(e.target.value, "doorHeight")}
               name="doorHeight"
             />
-            <span>CM</span>
+            <span>cm</span>
           </div>
 
-          <UploadImage
-            image={enteredValues.image.objectUrl}
-            onSelectImage={onSelectImage}
-          />
+          <UploadImage image={image?.objectUrl} onSelectImage={onSelectImage} />
           <div className={classes.buttons}>
             <Button
-              type="reset"
+              type="button"
               variant="contained"
               color="error"
               onClick={onReset}

@@ -66,3 +66,10 @@ a {
   gap: 15px;
   margin: 20px auto;
 }
+
+.place-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}

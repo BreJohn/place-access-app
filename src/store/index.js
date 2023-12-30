@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import googlePlacesReducer from "./googleplaces";
-import accessPlacesReducer from "./accessPlaces";
+import accessPlacesReducer from "./access-places";
 
 import authReducer from "./auth";
 

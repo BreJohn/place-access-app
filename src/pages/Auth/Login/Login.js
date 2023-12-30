@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import classes from "./Login.module.scss";
 import { CustomFormControl } from "../../../components/UI/CustomFormControl";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../../store/auth";

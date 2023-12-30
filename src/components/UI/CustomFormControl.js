@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField } from "@mui/material";
 
 export const CustomFormControl = ({
@@ -12,8 +12,13 @@ export const CustomFormControl = ({
     errorText: `${restProps.label} is not valid`,
     isTouched: false,
     required: false,
+    value,
     ...restProps,
   });
+
+  useEffect(() => {
+    setFormControl({ value });
+  }, [value]);
 
   const handleOnBlur = (e) => {
     const hasError = restProps.validator
@@ -45,7 +50,9 @@ export const CustomFormControl = ({
         inputMode: "numeric",
         pattern: "[0-9]*",
         min: restProps.min,
+        value,
       }}
+      onChange={(e) => handleOnChange(e)}
       {...restProps}
     />
   );
@@ -54,6 +61,7 @@ export const CustomFormControl = ({
     numberInput
   ) : (
     <TextField
+      value={value}
       onChange={(e) => handleOnChange(e)}
       onBlur={(e) => handleOnBlur(e)}
       error={!!formControl.hasError}

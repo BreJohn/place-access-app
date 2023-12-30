@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAccessPlaces } from "../services/firestore";
 
 const initialAccessPlacesState = { accessPlaces: [] };
 
-const accessPlacesSlice = createSlice({
+export const accessPlacesSlice = createSlice({
   name: "accessPlaces",
   initialState: initialAccessPlacesState,
   reducers: {
@@ -14,14 +13,5 @@ const accessPlacesSlice = createSlice({
     delete() {},
   },
 });
-
-export const accessPlacesActions = accessPlacesSlice.actions;
-
-export const fetchAccessPlaces = () => {
-  return async (dispatch) => {
-    const accessPlaces = await getAccessPlaces();
-    dispatch(accessPlacesActions.getAccessPlaces(accessPlaces));
-  };
-};
 
 export default accessPlacesSlice.reducer;
