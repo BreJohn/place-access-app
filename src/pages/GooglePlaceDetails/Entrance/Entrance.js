@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import classes from "./Entrance.module.scss";
 import { CustomFormControl } from "../../../components/UI/CustomFormControl";
-import { Button, Checkbox, FormControlLabel } from "@mui/material";
+import { Button, Card, Checkbox, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import { UploadImage } from "../../../components/UI/UploadImage";
 import {
@@ -35,10 +35,10 @@ export const Entrance = (props) => {
       ? state.googlePlaces.googlePlaces.filter((place) => place.id === id)[0]
       : state.accessPlaces.accessPlaces.filter((place) => place.id === id)[0];
   });
-
+  const loading = useSelector((state) => state.accessPlaces.isLoading);
   // Memoize the place using useMemo
   useMemo(() => {
-    if (place && place.accessibility.entrance) {
+    if (place && place?.accessibility?.entrance) {
       setEnteredValues({ ...place.accessibility.entrance });
       return;
     }
@@ -96,10 +96,11 @@ export const Entrance = (props) => {
       doorWidth: "",
       doorHeight: "",
     });
+    setImage(null);
   };
 
   return (
-    <div className={classes.container}>
+    <Card className={classes.container}>
       <h1>Entrance Accessibility Information</h1>
       <form onSubmit={onFormSubmit}>
         <div className={classes.controls}>
@@ -114,7 +115,6 @@ export const Entrance = (props) => {
               label="Stairs"
               name="hasStairs"
             />
-
             <CustomFormControl
               label="Steps"
               required={true}
@@ -154,8 +154,11 @@ export const Entrance = (props) => {
             />
             <span>cm</span>
           </div>
-
-          <UploadImage image={image?.objectUrl} onSelectImage={onSelectImage} />
+          <UploadImage
+            loading={loading}
+            image={image?.objectUrl}
+            onSelectImage={onSelectImage}
+          />
           <div className={classes.buttons}>
             <Button
               type="button"
@@ -171,6 +174,6 @@ export const Entrance = (props) => {
           </div>
         </div>
       </form>
-    </div>
+    </Card>
   );
 };

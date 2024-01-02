@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialAccessPlacesState = { accessPlaces: [] };
+const initialAccessPlacesState = { accessPlaces: [], loading: false };
 
 export const accessPlacesSlice = createSlice({
   name: "accessPlaces",
@@ -8,6 +8,9 @@ export const accessPlacesSlice = createSlice({
   reducers: {
     getAccessPlaces(state, action) {
       state.accessPlaces = [...action.payload];
+    },
+    isLoading(state, action) {
+      state.isLoading = action.payload;
     },
     update() {},
     delete() {},

@@ -1,6 +1,7 @@
 .container {
   margin: 32px;
   max-width: 450px;
+  padding: 16px;
 }
 
 .group {
@@ -22,4 +23,5 @@
 .buttons {
   display: flex;
   gap: 5px;
+  justify-content: space-between;
 }
