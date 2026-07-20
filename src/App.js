@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.scss";
-import { NavBar } from "./components/NavBar/NavBar";
+import { NavBar } from "./components/Navbar/Navbar";
 import { mapGooglePlacesToPlaces } from "./utils/utils";
 import { key } from "./assets/googleApiKey";
 import { useDispatch } from "react-redux";
@@ -64,7 +64,7 @@ function App() {
             const longitude = results[0].geometry.location.lng();
             getNearbyPlaces(latitude, longitude);
           }
-        }
+        },
       );
     };
     window.initMap = initMap;
@@ -72,7 +72,7 @@ function App() {
     // Cleanup function to remove the dynamically added script tag
     return () => {
       const script = document.querySelector(
-        'script[src^="https://maps.googleapis.com/maps/api/js"]'
+        'script[src^="https://maps.googleapis.com/maps/api/js"]',
       );
       if (script) {
         document.body.removeChild(script);
